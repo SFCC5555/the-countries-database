@@ -1,6 +1,6 @@
 import React from "react";
 import { FilterMenu } from "./FilterMenu";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Filter = ({mode})=> {
 
