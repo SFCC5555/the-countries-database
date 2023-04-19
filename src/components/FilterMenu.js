@@ -18,7 +18,7 @@ const FilterMenu = ({ mode, closeFilterMenu}) => {
 
 
     return (
-    <section className={`absolute flex flex-col gap-2 p-4 left-0 rounded-md ${mode}Shadow bg-${mode}ModeElements text-${mode}ModeText`} style={{width:175, top:54}}> 
+    <section className={`absolute flex flex-col gap-2 p-4 left-0 rounded-md ${mode}ModeElement`} style={{width:175, top:54}}> 
 
         <div className="cursor-pointer hover:opacity-70">Africa</div>
         <div className="cursor-pointer hover:opacity-70">America</div>

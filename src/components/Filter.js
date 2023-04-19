@@ -22,7 +22,7 @@ const Filter = ({mode})=> {
     return (
 
         <div className="relative text-sm font-semibold">
-            <button id='filterButton' onClick={controlFilterMenu} className={`relative text-left pl-5 filterButton h-12 rounded-md ${mode}Shadow bg-${mode}ModeElements text-${mode}ModeText hover:opacity-70`} style={{width:175}}>
+            <button id='filterButton' onClick={controlFilterMenu} className={`relative text-left pl-5 filterButton h-12 rounded-md ${mode}ModeElement hover:opacity-70`} style={{width:175}}>
             
                 Filter by Region
                 

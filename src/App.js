@@ -18,7 +18,7 @@ function App() {
 
 
   return (
-    <div className={`bg-${mode}ModeBackground h-full`}>
+    <div className={`${mode}ModeBackground h-full`}>
       <NavBar mode = {mode} handleMode={handleMode} />
       <section className='mx-5 flex flex-col items-stretch gap-8 sm:flex-row sm:justify-between sm:mx-10'>
         <Search mode = {mode} />
