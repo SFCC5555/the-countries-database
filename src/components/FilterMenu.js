@@ -14,7 +14,7 @@ const FilterMenu = ({ mode, closeFilterMenu}) => {
         }
 
 
-    },[])
+    },[closeFilterMenu])
 
 
     return (
