@@ -1,9 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 
 * {
-  @apply box-border m-0 p-0;
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+}
+
+body {
+  height: 100vh;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+#root {
+  height: 100%;
+}
+
+.darkShadow {
+  box-shadow: 0px 0px 7px hsl(200, 15%, 8%,25%);
 }
 
 
+.lightShadow {
+  box-shadow: 0px 0px 7px hsl(0, 0%, 52%,25%);
+}

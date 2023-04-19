@@ -1,3 +1,7 @@
+ .reactLogo {
+    height: 7.5vmin;
+ }
+ 
  @media (prefers-reduced-motion: no-preference) {
     .reactLogo {
       animation: reactLogo-spin infinite 45s linear;

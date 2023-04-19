@@ -5,11 +5,18 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        darkModeElements: 'hsl(209, 23%, 22%)',
+        darkModeBackground: 'hsl(207, 26%, 17%)',
+        lightModeText: 'hsl(200, 15%, 8%)',
+        lightModeInput: 'hsl(0, 0%, 52%)',
+        lightModeBackground: 'hsl(0, 0%, 98%)',
+        darkModeText: 'hsl(0, 0%, 100%)',
+        lightModeElements: 'hsl(0, 0%, 100%)'
       },
+      fontFamily: {
+        nunito: ['Nunito Sans', 'sans-serif']
+      }
     },
   },
   plugins: [],
