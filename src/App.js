@@ -17,6 +17,7 @@ function App() {
   const [inputValue,setInputValue] = useState('');
   const [detailState,setDetailState] = useState(false);
   const [detailData,setDetailData] = useState({});
+  const [serverError,setServerError] = useState(false);
 
 
 
@@ -35,8 +36,12 @@ function App() {
       .then(data=>{
         setData(data)
         setNewData(data)
+        console.log(data)
       }
-        );
+        ).catch(error => {
+          console.error('Error:', error);
+          setServerError(true);
+        });;
 
 
   },[])
@@ -93,6 +98,11 @@ function App() {
         <Search mode = {mode} handleChange={handleChange} />
         <Filter mode = {mode} region={region} handleFilter={handleFilter} />
       </section>}
+
+      {serverError&&<div className='flex flex-col items-center justify-center p-5'>
+                  <div className=' text-red-400' >Server Error:</div>
+                  <p>The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later.</p>
+      </div>}
 
       {!detailState&&<section className='px-5 sm:px-10 flex justify-between gap-y-10 flex-wrap'>
         {newData&&newData.map(countrie=>(<CountrieCard key={countrie.name} renderDetail = {renderDetail} mode={mode} src={countrie.flag} name={countrie.name} population={countrie.population} region={countrie.region} capital = {countrie.capital} />))}
