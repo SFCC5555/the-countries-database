@@ -104,7 +104,7 @@ function App() {
                   <p>The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later.</p>
       </div>}
 
-      {!detailState&&<section className='px-5 sm:px-10 flex justify-between gap-y-10 flex-wrap'>
+      {!detailState&&<section className='px-5 sm:px-10 flex justify-between gap-y-10 gap-x-7 flex-wrap'>
         {newData&&newData.map(countrie=>(<CountrieCard key={countrie.name} renderDetail = {renderDetail} mode={mode} src={countrie.flag} name={countrie.name} population={countrie.population} region={countrie.region} capital = {countrie.capital} />))}
       </section>}
 
