@@ -4,7 +4,7 @@ const Detail = ({ mode,data,src,name,nativeName,population,region,subregion,capi
 
     let newBorders = borders.map(b=>{
         
-        let newBorder = data.filter(c=>c.alpha3Code===b)[0].name;
+        let newBorder = data.filter(c=>c.cca3===b)[0].name.common;
 
         return newBorder
     });

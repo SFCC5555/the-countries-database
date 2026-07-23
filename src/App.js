@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { LogoReact } from './components/LogoReact';
 import { NavBar } from './components/NavBar';
 import { Search } from './components/Search';
@@ -31,7 +30,7 @@ function App() {
 
   useEffect(()=> {
 
-      fetch('https://restcountries.com/v2/all')
+      fetch('/countries.json')
       .then(response=>response.json())
       .then(data=>{
         setData(data)
@@ -53,7 +52,7 @@ function App() {
 
     let regionMatch = new RegExp(region)
 
-    setNewData(data.filter(countrie=>match.test(countrie.name) && regionMatch.test(countrie.region)));
+    setNewData(data.filter(countrie=>match.test(countrie.name.common) && regionMatch.test(countrie.region)));
     
     setInputValue(e.target.value);
   }
@@ -66,12 +65,12 @@ function App() {
 
     if (e.target.innerText==='All') {
 
-      setNewData(data.filter(countrie=>match.test(countrie.name)));
+      setNewData(data.filter(countrie=>match.test(countrie.name.common)));
       setRegion('');
 
 
     } else {
-      setNewData(data.filter(countrie=>regionMatch.test(countrie.region) && match.test(countrie.name)));
+      setNewData(data.filter(countrie=>regionMatch.test(countrie.region) && match.test(countrie.name.common)));
       setRegion(e.target.innerText)
     }
  
@@ -80,7 +79,7 @@ function App() {
 
   function renderDetail(e) {
 
-    setDetailData(...data.filter(countrie=>countrie.name===e.target.id));
+    setDetailData(...data.filter(countrie=>countrie.name.common===e.target.id));
 
     setDetailState(true);
 
@@ -105,10 +104,10 @@ function App() {
       </div>}
 
       {!detailState&&<section className='px-5 sm:px-10 flex justify-between gap-y-10 gap-x-7 flex-wrap'>
-        {newData&&newData.map(countrie=>(<CountrieCard key={countrie.name} renderDetail = {renderDetail} mode={mode} src={countrie.flag} name={countrie.name} population={countrie.population} region={countrie.region} capital = {countrie.capital} />))}
+        {newData&&newData.map(countrie=>(<CountrieCard key={countrie.name.common} renderDetail = {renderDetail} mode={mode} src={countrie.flags.png} name={countrie.name.common} population={countrie.population} region={countrie.region} capital = {countrie.capital?countrie.capital[0]:''} />))}
       </section>}
 
-      {detailState&&<Detail mode = {mode} data={data} src = {detailData.flag} name = {detailData.name} nativeName = {detailData.nativeName} population = {detailData.population} region = {detailData.region} subregion = {detailData.subregion} capital = {detailData.capital?detailData.capital:'No Capital'} topLevelDomain = {detailData.topLevelDomain} currencies = {detailData.currencies?detailData.currencies.map(c=>c.name).join(', '):'No Currencies'} languages={detailData.languages.map(l=>l.name).join(', ')} borders={detailData.borders?detailData.borders:[]} closeDetail = {closeDetail} renderDetail={renderDetail} />}
+      {detailState&&<Detail mode = {mode} data={data} src = {detailData.flags.png} name = {detailData.name.common} nativeName = {detailData.name.nativeName?Object.values(detailData.name.nativeName)[0].common:detailData.name.common} population = {detailData.population} region = {detailData.region} subregion = {detailData.subregion} capital = {detailData.capital&&detailData.capital[0]?detailData.capital[0]:'No Capital'} topLevelDomain = {detailData.tld} currencies = {detailData.currencies&&Object.keys(detailData.currencies).length?Object.values(detailData.currencies).map(c=>c.name).join(', '):'No Currencies'} languages={detailData.languages&&Object.keys(detailData.languages).length?Object.values(detailData.languages).join(', '):'No Languages'} borders={detailData.borders?detailData.borders:[]} closeDetail = {closeDetail} renderDetail={renderDetail} />}
 
       <LogoReact />
     </div>
